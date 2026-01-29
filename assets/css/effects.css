@@ -8,9 +8,11 @@
    EFFECT VARIABLES (NE DIRAJ BASE)
 ===================== */
 :root{
-  --glow-main: rgba(250,204,21,.75);
-  --glow-soft: rgba(250,204,21,.45);
+  --gold-main: rgba(255, 200, 90, .85);
+  --gold-soft: rgba(255, 180, 60, .35);
+  --gold-deep: rgba(255, 150, 30, .25);
 }
+
 
 /* =====================
    FLOW BREATH
