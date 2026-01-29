@@ -74,6 +74,7 @@ h1, h2, h3 {
 }
 
 h1 {
+    font-family: "Cormorant Garamond", serif;
   font-size: clamp(2.6rem, 6vw, 4.4rem);
   line-height: 1.05;
 }
@@ -612,3 +613,4 @@ header {
   display: block;
   margin-bottom: 18px;
 }
+
