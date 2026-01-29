@@ -198,6 +198,9 @@ header {
   max-width: 900px;
   padding: 0 24px;
 }
+.hero-title{
+  font-family: "Cormorant Garamond", serif !important;
+}
 
 .hero-title span { color: var(--accent); }
 
@@ -613,4 +616,5 @@ header {
   display: block;
   margin-bottom: 18px;
 }
+
 
