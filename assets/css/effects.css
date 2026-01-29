@@ -128,11 +128,12 @@ header::after{
 .card:hover,
 .card--guest:hover,
 .episode-card:hover{
-  transform:translateY(-10px);
+  transform: translateY(-10px);
   box-shadow:
     var(--shadow-hover),
-    0 0 48px var(--glow-main),
-    0 0 100px var(--glow-soft);
+    0 0 18px var(--gold-main),
+    0 0 48px var(--gold-soft),
+    0 0 96px var(--gold-deep);
 }
 
 /* =========================================================
