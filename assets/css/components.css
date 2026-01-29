@@ -274,8 +274,8 @@
 .social-float a{
   width: 54px;
   height: 54px;
-  background: #facc15;
-  border-radius: 14px;
+  background: #ebdb92;
+  border-radius: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -316,7 +316,7 @@
     width: 34px;
     height: 44px;
     border-radius: 10px 0 0 10px;
-    background: #facc15;
+    background: ##ebdb92;
     color: #fff;
     border: none;
     font-size: 22px;
