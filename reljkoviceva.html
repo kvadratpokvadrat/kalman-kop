@@ -4,8 +4,40 @@
   <meta charset="UTF-8">
   <title>Interaktivna zgrada</title>
   <link rel="stylesheet" href="assets/css/reljkoviceva.css">
+   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/effects.css">
 </head>
 <body>
+<!-- =====================
+     HEADER
+===================== -->
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+  <img src="assets/images/logo.png" alt="Kalman Kop">
+</a>
+
+
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav">
+      <a href="index.html" class="active">Početna</a>
+      <a href="projekti u toku.html">Projekti u toku</a>
+      <a href="gotovi projekti.html">Gtovoi projekti</a>
+      <a href="o-nama.html">O nama</a>
+      <a href="kontakt.html">Kontakt</a>
+
+     </nav>
+  </div>
+</header>
+
+<div class="nav-overlay"></div>
 
 <div class="building-wrapper">
   <img src="img/zgrada.png" class="building-img">
@@ -201,6 +233,43 @@ modal.addEventListener("click", e => {
   if (e.target === modal) modal.classList.remove("show");
 });
 </script>
+<div class="section-divider"></div>
 
+<footer class="site-footer">
+  <div class="footer-wrap">
+
+    <div class="footer-col footer-brand">
+      <img src="assets/images/logo.png" alt="Kalman Kop">
+      <p>
+        Kalman Kop d.o.o. je građevinska firma sa sedištem u Novom Sadu,
+        koja postoji od 2021. godine. Izgradnja i prodaja stanova Novi Sad.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>PRODAJA STANOVA</h4>
+      <a href="#">Početna</a><br>
+      <a href="#">Projekti u toku</a><br>
+      <a href="#">Gotovi projekti</a><br>
+      <a href="#">O nama</a><br>
+      <a href="#">Kontakt</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>KONTAKTIRAJTE NAS</h4>
+      <p>063 518 718</p>
+      <p>065 575 55 40</p>
+      <p>kalmankop2021@gmail.com</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>DRUŠTVENE MREŽE</h4>
+      <a href="#">Instagram</a><br>
+      <a href="#">Facebook</a>
+    </div>
+
+  </div>
+</footer>
 </body>
 </html>
+
