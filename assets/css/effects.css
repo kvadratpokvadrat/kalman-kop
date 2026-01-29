@@ -1,0 +1,598 @@
+/* =========================================================
+   KVADRAT PO KVADRAT — EFFECTS.CSS (FINAL)
+   GLOW • FLOW • CARDS • BADGES • MODAL
+   THEME SAFE (LIGHT / DARK)
+========================================================= */
+
+/* =====================
+   EFFECT VARIABLES (NE DIRAJ BASE)
+===================== */
+:root{
+  --glow-main: rgba(250,204,21,.75);
+  --glow-soft: rgba(250,204,21,.45);
+}
+
+/* =====================
+   FLOW BREATH
+===================== */
+@keyframes flowBreath{
+  0%{opacity:.4}
+  50%{opacity:1}
+  100%{opacity:.4}
+}
+
+/* =========================================================
+   HEADER FLOW LINE (UVEK VIDLJIVA)
+========================================================= */
+header{
+  position: relative;
+}
+
+/* === GOLD LINE NA DONJOJ IVICI HEADERA === */
+header::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;          /* 👈 KLJUČNO */
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #b8943b 30%,
+    #f2d27a 50%,
+    #b8943b 70%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  opacity: 0.9;
+  animation: goldShine 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* === SHINE ANIMATION === */
+@keyframes goldShine {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* =========================================================
+   GLOBAL CARD CORE (FORMA SE NE RASPADA)
+========================================================= */
+.card,
+.card--guest,
+.episode-card{
+  position:relative;
+  background:var(--card);
+  border-radius:var(--radius-lg);
+  overflow:HIDDEN; /* glow se ne seče */
+  transition:
+    transform .45s cubic-bezier(.4,0,.2,1),
+    box-shadow .45s cubic-bezier(.4,0,.2,1);
+}
+
+
+/* =========================================================
+   SECTION DIVIDER
+========================================================= *//* === SECTION DIVIDER – GOLD SHINE (NO GLOW) === */
+
+.section-divider{
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #b8943b 30%,
+    #f2d27a 50%,
+    #b8943b 70%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  opacity: 0.9;
+  animation: goldShine 6s ease-in-out infinite;
+}
+
+/* === SHINE ANIMATION === */
+@keyframes goldShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* =========================================================
+   GLOBAL CARD CORE (FORMA SE NE RASPADA)
+========================================================= */
+.card,
+.card--guest,
+.episode-card{
+  position:relative;
+  background:var(--card);
+  border-radius:var(--radius-lg);
+  overflow:HIDDEN; /* glow se ne seče */
+  transition:
+    transform .45s cubic-bezier(.4,0,.2,1),
+    box-shadow .45s cubic-bezier(.4,0,.2,1);
+}
+
+/* =========================================================
+   HOVER – JAK NA OBE TEME
+========================================================= */
+.card:hover,
+.card--guest:hover,
+.episode-card:hover{
+  transform:translateY(-10px);
+  box-shadow:
+    var(--shadow-hover),
+    0 0 48px var(--glow-main),
+    0 0 100px var(--glow-soft);
+}
+
+/* =========================================================
+   GUEST CARD (BEZ BELOG OVERLAYA)
+========================================================= */
+.card--guest img{
+  height:340px;
+  width:100%;
+  object-fit:cover;
+  border-radius:inherit;
+}
+
+
+
+.card--guest .card-body{
+  position:absolute;
+  bottom:0;
+  padding:22px;
+  color:var(--text);
+}
+
+/* EPISODE / DARK SECTIONS */
+.episode-card h3{
+  color: var(--text);
+}
+
+/* GUEST / HOST CARDS – BELA POZADINA */
+.card--guest .card-title{
+  color: #fff;
+}
+
+/* META TEKST */
+.card--guest .card-meta{
+  color: #a5a5a5;
+}
+
+
+.card-meta,
+.muted,
+#guestModalBio{
+   color: var(--text);
+}
+
+/* =========================================================
+   BADGES — VISUAL EFFECTS (DARK + LIGHT SAFE)
+========================================================= */
+
+.badge,
+.badge-new,
+.episode-number,
+.episode-duration {
+  position: absolute;
+  z-index: 20;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  padding: 6px 14px;
+  border-radius: 999px;
+
+  background: var(--accent);
+  color: #000;
+
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.15),
+    0 6px 20px rgba(250,204,21,.45),
+    0 0 30px rgba(250,204,21,.55);
+
+  pointer-events: none;
+}
+
+
+/* =====================
+   BADGE POSITIONS
+===================== */
+
+.badge,
+.badge-new {
+  top: 240px;
+  left: 16px;
+}
+
+.episode-number {
+  top: 14px;
+  left: 14px;
+}
+
+.episode-duration {
+  top: 14px;
+  right: 14px;
+}
+
+
+/* =====================
+   BADGE NEW — EXTRA EMPHASIS
+===================== */
+
+.badge-new {
+  text-transform: uppercase;
+  animation: badgePulse 2.8s ease-in-out infinite;
+}
+
+
+/* =====================
+   LIGHT MODE BOOST
+===================== */
+
+body:not(.dark) .badge,
+body:not(.dark) .badge-new,
+body:not(.dark) .episode-number,
+body:not(.dark) .episode-duration {
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.25),
+    0 8px 26px rgba(250,204,21,.6),
+    0 0 40px rgba(250,204,21,.65);
+}
+
+
+/* =====================
+   ANIMATION
+===================== */
+
+@keyframes badgePulse {
+  0%,100% {
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,.15),
+      0 6px 20px rgba(250,204,21,.45),
+      0 0 30px rgba(250,204,21,.55);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,.15),
+      0 10px 30px rgba(250,204,21,.7),
+      0 0 55px rgba(250,204,21,.85);
+  }
+}
+
+
+/* =========================================================
+   FEATURED CARD (PREMIUM)
+========================================================= */
+.card.featured{
+  border:2px solid var(--glow-main);
+  box-shadow:
+    0 0 0 1px var(--glow-soft),
+    0 40px 120px rgba(0,0,0,.8),
+    0 0 120px var(--glow-soft);
+}
+
+.card.featured::after{
+  content:"Premium";
+  position:absolute;
+  top:18px;
+  right:18px;
+  background:var(--accent);
+  color:#000;
+  font-size:11px;
+  font-weight:800;
+  padding:6px 14px;
+  border-radius:999px;
+}
+
+/* =========================================================
+   EPISODE BADGES
+========================================================= */
+.episode-number,
+.episode-duration{
+  background:rgba(0,0,0,.65);
+  color:#fff;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:600;
+}
+
+body:not(.dark) .episode-number,
+body:not(.dark) .episode-duration{
+  background:rgba(255,255,255,.95);
+  color:#000;
+}
+
+/* =========================================================
+   MODAL (FIXED – MOBILE SAFE, SCROLL FIX)
+========================================================= */
+.guest-modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(14px);
+  z-index:9999;
+}
+
+.guest-modal.active{
+  display:flex;
+}
+
+body:not(.dark) .guest-modal{
+  background:rgba(255,255,255,.85);
+}
+
+/* =========================================================
+   MODAL CONTENT
+========================================================= */
+.guest-modal-content{
+  background:var(--card);
+  color:var(--text);
+  border-radius:28px;
+  width:92%;
+  max-width:840px;
+  padding:65px;
+
+  /* 🔥 KLJUČNO */
+  max-height:90vh;
+  overflow:hidden;
+
+  box-shadow:
+    0 40px 140px rgba(0,0,0,.85),
+    0 0 80px var(--glow-soft);
+
+  animation:modalIn .45s cubic-bezier(.4,0,.2,1);
+  position:relative;
+}
+
+@keyframes modalIn{
+  from{opacity:0;transform:scale(.96) translateY(20px)}
+  to{opacity:1;transform:none}
+}
+
+/* FLOW LINE */
+.guest-modal-content::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:14%;
+  right:14%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--glow-main),transparent);
+  box-shadow:0 0 22px var(--glow-main);
+  animation:flowBreath 4s ease-in-out infinite;
+}
+
+/* =========================================================
+   MODAL GRID
+========================================================= */
+.guest-modal-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+}
+
+/* =========================================================
+   MODAL IMAGE
+========================================================= */
+.guest-modal-image img{
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  border-radius:22px;
+}
+
+/* =========================================================
+   MODAL TEXT (SCROLL)
+========================================================= */
+.guest-modal-text{
+  max-height:50vh;
+  overflow-y:auto;
+  padding-right:12px;
+  scroll-behavior:smooth;
+}
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+#closeGuest{
+  position:absolute;
+  bottom:20px;
+  right:20px;
+
+  background:var(--accent);
+  color:#000;
+  border:none;
+  border-radius:999px;
+  padding:12px 26px;
+  font-weight:800;
+  cursor:pointer;
+
+  box-shadow:0 0 30px var(--glow-main);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+#closeGuest:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 40px var(--glow-main);
+}
+
+/* =========================================================
+   MOBILE FIX 🔥
+========================================================= */
+@media (max-width:768px){
+
+  .guest-modal-grid{
+    grid-template-columns:1fr;
+  }
+
+  .guest-modal-image img{
+    height:260px;
+  }
+
+  .guest-modal-content{
+    padding:32px 22px 90px;
+  }
+
+  .guest-modal-text{
+    max-height:40vh;
+  }
+
+  #closeGuest{
+    bottom:16px;
+    right:16px;
+    z-index:10000;
+  }
+}
+
+/* =========================================================
+   REVEAL (OSTAJE KAO PRE)
+========================================================= */
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+}
+
+.reveal-visible{
+  opacity:1;
+  transform:none;
+  transition:all .8s ease;
+}
+.contact-mail{
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.contact-mail:hover{
+  text-decoration: underline;
+}
+/* =========================================================
+   MODAL SCROLL – CINEMATIC (SAFE)
+========================================================= */
+
+
+/* ===============================
+   WEBKIT (Chrome, Edge, Safari)
+================================ */
+
+.guest-modal-text::-webkit-scrollbar{
+  width: 6px;
+}
+
+.guest-modal-text::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+.guest-modal-text::-webkit-scrollbar-thumb{
+  background: linear-gradient(
+    180deg,
+    rgba(250,204,21,.85),
+    rgba(250,204,21,.45)
+  );
+  border-radius: 999px;
+}
+
+/* hover efekat */
+.guest-modal-text::-webkit-scrollbar-thumb:hover{
+  background: rgba(250,204,21,1);
+}
+
+/* ===============================
+   FIREFOX
+================================ */
+
+.guest-modal-text{
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+/* =========================================================
+   CTA – IDENTIČAN NEWSLETTER OKVIR (ALI SAMOSTALAN)
+========================================================= */
+
+.cta{
+  padding:120px 24px;
+}
+
+/* OKVIR – ISTI FEEL KAO NEWSLETTER */
+.cta-inner{
+  max-width:1100px;
+  margin:0 auto;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:56px;
+  box-shadow:var(--shadow);
+}
+
+/* SADRŽAJ – CENTAR */
+.cta-content{
+  max-width:720px;
+  margin:0 auto;
+  text-align:center;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* NASLOV */
+.cta-content h2{
+  margin-bottom:14px;
+}
+
+/* UNDERLINE U CENTRU */
+.cta-content h2::after{
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* TEKST */
+.cta-content p{
+  margin-bottom:12px;
+}
+
+/* EMAIL */
+.cta-content strong{
+  color:var(--accent);
+}
+
+/* DUGME */
+.cta .btn{
+  margin-top:26px;
+  padding:14px 32px;
+  width:auto;
+}
+
+/* =====================
+   TABLET & MOBILE
+===================== */
+@media (max-width:1024px){
+  .cta-inner{
+    padding:40px 24px;
+  }
+}
+
+@media (max-width:768px){
+  .cta{
+    padding:80px 24px;
+  }
+
+  .cta .btn{
+    width:100%;
+    max-width:260px;
+  }
+}

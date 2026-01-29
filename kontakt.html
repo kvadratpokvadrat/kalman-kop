@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt</title>
+
+ <link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/effects.css">
+</head>
+
+<body class="home">
+
+<!-- =====================
+     HEADER
+===================== -->
+<header class="header">
+
+  <div class="header-inner">
+     <a href="index.html" class="logo">
+  <img src="assets/images/logo.png" alt="Kvadrat po Kvadrat">
+</a>
+
+    <!-- HAMBURGER -->
+    <button class="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- NAV -->
+    <nav class="nav">
+      <a href="index.html">Početna</a>
+      <a href="epizode.html">Epizode</a>
+      <a href="gosti.html">Gosti</a>
+      <a href="o-nama.html">O nama</a>
+      <a href="kontakt.html" class="active">Kontakt</a>
+
+      <a href="postani-sponzor.html" class="badge-btn">Postani sponzor</a>
+      <button class="badge-btn" id="themeToggle">Dark</button>
+    </nav>
+  </div>
+</header>
+  <!-- ŽUTA LINIJA -->
+  <div class="section-divider"></div>
+  
+
+<!-- =====================
+     HERO
+===================== -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1 class="hero-title reveal">
+      <span>Kontakt</span> 
+    </h1>
+
+    <p class="hero-subtitle reveal">
+    Poveži svoj brend sa publikom koja veruje, sluša i donosi odluke.
+    </p>
+
+    <div class="hero-actions">
+    </div>
+  </div>
+</section>
+
+<div class="nav-overlay"></div>
+
+<section class="cta">
+  <div class="cta-inner reveal">
+    <div class="cta-content">
+
+      <h2>Otvoreni smo za saradnju</h2>
+
+      <p>
+        Ako imate predlog za gosta, želite sponzorsku saradnju
+        ili imate pitanje — slobodno nam se obratite putem maila<br>
+        <a href="mailto:podcastkvadratpokvadrat@gmail.com"
+           class="contact-mail">
+          podcastkvadratpokvadrat@gmail.com
+        </a>
+      </p>
+
+      <p>Cenimo jasne poruke i dobre ideje.</p>
+
+      <a href="mailto:podcastkvadratpokvadrat@gmail.com?subject=Kontakt%20sa%20sajta"
+         class="btn">
+        Kontaktiraj nas
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+
+<div class="section-divider"></div>
+
+<!-- =====================
+     NEWSLETTER
+===================== -->
+<section>
+  <div class="newsletter-inner">
+    <div class="newsletter-image">
+      <img src="assets/images/newsletter.jpg" alt="">
+    </div>
+
+    <div class="newsletter-content">
+      <h2>Ostanite u toku</h2>
+      <p>Pretplatite se i dobijajte nove epizode prvi.</p>
+
+      <form
+        class="newsletter-form"
+        action="https://9e6e5df6.sibforms.com/serve/MUIFAOOe567v1lZxWm_8MYaJVvcvayCzYgkFtGz_yphEAF3GkMiX3epjtwNfKlBBPZOaMGobHM4jRigWGdx7q8uLyyl_Vq3c19EAoox8OomHeAqKlVG4eCIyDpza76ILyQKgFJqcPq_hSMWDGU2G72f64QPvABfTTpsAzcq3Bmr18yWQwCe8I7socS5a7MWwXocF15M6t-BFmgcMQg=="
+        method="POST">
+        <input type="email" name="EMAIL" placeholder="Vaš email" required>
+        <button class="btn" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+  
+<div id="newsletter-success" style="display:none;" class="newsletter-success">
+  ✅ Uspešno ste se pretplatili!
+</div>
+
+<div class="section-divider"></div>
+
+<footer class="footer">
+  © 2025 Kvadrat po Kvadrat
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/float.js"></script>
+
+  <script>
+  const form = document.querySelector(".newsletter-form");
+  const success = document.getElementById("newsletter-success");
+
+  if(form){
+    form.addEventListener("submit", function(e){
+      e.preventDefault(); // ❌ sprečava belu stranu
+
+      const data = new FormData(form);
+
+      fetch(form.action, {
+        method: "POST",
+        body: data,
+        mode: "no-cors"
+      });
+
+      success.style.display = "block";
+      form.reset();
+    });
+  }
+</script>
+ <div class="social-float" id="socialFloat">
+   
+<button class="social-toggle" aria-label="Društvene mreže">
+    ‹
+  </button>
+
+  <a href="https://youtube.com/@kvadratpokvadrat" target="_blank" aria-label="YouTube">
+    <img src="assets/icons/youtube.svg" alt="YouTube">
+  </a>
+
+  <a href="https://www.instagram.com/kvadratpokvadrat.podcast/" target="_blank" aria-label="Instagram">
+    <img src="assets/icons/instagram.svg" alt="Instagram">
+  </a>
+
+  <a href="mailto:podcastkvadratpokvadrat@gmail.com" aria-label="Email">
+    <img src="assets/icons/mail.svg" alt="Email">
+  </a>
+</div>
+
+</body>
+</html>

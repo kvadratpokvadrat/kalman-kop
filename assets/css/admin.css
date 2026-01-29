@@ -1,0 +1,239 @@
+/* =====================
+   ADMIN – GUESTS PANEL
+===================== */
+
+:root{
+  --bg: #0a0a0a;
+  --card: #111;
+  --border: #1f1f1f;
+  --text: #f5f5f5;
+  --muted: #aaa;
+  --accent: #facc15;
+  --radius: 14px;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  padding: 40px 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* =====================
+   PIN LOGIN OVERLAY
+===================== */
+.admin-pin-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.admin-pin-box{
+  width: 100%;
+  max-width: 360px;
+  padding: 32px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.admin-pin-box h2{
+  margin-bottom: 20px;
+}
+
+.admin-pin-box input{
+  width: 100%;
+  padding: 14px;
+  background: #000;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 18px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.admin-pin-box button{
+  margin-top: 18px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  border: none;
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =====================
+   HEADINGS
+===================== */
+h1, h2{
+  max-width: 1100px;
+  margin: 0 auto 24px;
+}
+
+h2{
+  margin-top: 56px;
+  color: var(--muted);
+}
+
+/* =====================
+   FORM
+===================== */
+#guestForm{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: grid;
+  gap: 18px;
+}
+
+#guestForm input[type="text"],
+#guestForm textarea{
+  width: 100%;
+  padding: 14px 16px;
+  background: #000;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+#guestForm textarea{
+  min-height: 120px;
+  resize: vertical;
+}
+
+#guestForm input::placeholder,
+#guestForm textarea::placeholder{
+  color: var(--muted);
+}
+
+#guestForm input[type="file"]{
+  color: var(--muted);
+}
+
+#guestForm button{
+  margin-top: 12px;
+  padding: 14px 20px;
+  border-radius: 999px;
+  border: none;
+  background: var(--accent);
+  color: #000;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+#guestForm button:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(250,204,21,.25);
+}
+
+/* =====================
+   DIVIDER
+===================== */
+hr{
+  max-width: 1100px;
+  margin: 56px auto;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* =====================
+   GUESTS GRID
+===================== */
+#adminGuestList{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* =====================
+   SINGLE GUEST CARD
+===================== */
+.admin-guest-card{
+  padding: 22px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.admin-guest-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+
+.admin-guest-info{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-guest-info strong{
+  font-size: 16px;
+}
+
+.admin-guest-info span{
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* =====================
+   ACTION BUTTONS
+===================== */
+.admin-guest-actions{
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.admin-guest-actions button{
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 14px;
+  transition: background .2s ease;
+}
+
+.admin-guest-actions button:hover{
+  background: var(--border);
+}
+
+/* =====================
+   MOBILE
+===================== */
+@media (max-width: 600px){
+  body{
+    padding: 24px 14px;
+  }
+
+  #guestForm{
+    padding: 24px;
+  }
+}

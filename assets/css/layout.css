@@ -1,0 +1,163 @@
+/* =========================================================
+   LAYOUT.CSS — FINAL (APPLE-STYLE FLOW)
+========================================================= */
+
+/* =====================
+   HEADER
+===================== */
+header{
+  position:fixed;
+  inset:0 0 auto 0;
+  height:96px;
+  background:var(--card);
+  backdrop-filter:blur(26px);
+  z-index:5000;
+}
+
+.header-inner{
+  max-width:1200px;
+  height:100%;
+  margin:0 auto;
+  padding:0 5px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+/* =====================
+   NAV
+===================== */
+.nav{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+.nav a{
+  position:relative;
+  height:40px;
+  display:inline-flex;
+  align-items:center;
+  font-size:14px;
+  font-weight:500;
+}
+
+/* =====================
+   SECTIONS
+===================== */
+section{
+  padding:96px 56px;
+  position:relative;
+}
+
+/* =====================
+   HERO
+===================== */
+.hero{
+  min-height:calc(65vh - 96px);
+  padding-top:96px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:
+    radial-gradient(circle at top, rgba(250,204,21,.22), transparent 45%),
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+    url("../images/hero.png") center / cover no-repeat;
+}
+
+/* =====================
+   FOOTER
+===================== */
+.footer{
+  padding:80px 24px 40px;
+  text-align:center;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+}
+
+/* =====================
+   HAMBURGER + MOBILE NAV
+===================== */
+.hamburger{
+  display:none;
+  width:42px;
+  height:42px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  position:relative;
+}
+
+.hamburger span{
+  position:absolute;
+  left:9px;
+  right:9px;
+  height:2px;
+  background:var(--accent);
+  transition:.3s ease;
+}
+
+.hamburger span:nth-child(1){top:13px}
+.hamburger span:nth-child(2){top:20px}
+.hamburger span:nth-child(3){top:27px}
+
+.hamburger.active span:nth-child(1){
+  transform:rotate(45deg);
+  top:20px;
+}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){
+  transform:rotate(-45deg);
+  top:20px;
+}
+
+.nav-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  opacity:0;
+  pointer-events:none;
+  transition:.3s ease;
+  z-index:3000;
+}
+
+.nav-overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media(max-width:768px){
+  .header-inner{padding:0 24px}
+  section{padding:80px 24px}
+
+  .hamburger{display:block}
+
+  .nav{
+    position:fixed;
+    top:96px;
+    left:0;
+    right:0;
+    flex-direction:column;
+    background:var(--card);
+    padding:32px 24px 40px;
+    transform:translateY(-120%);
+    opacity:0;
+    pointer-events:none;
+    transition:.4s cubic-bezier(.4,0,.2,1);
+    z-index:4000;
+  }
+
+  .nav.active{
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+  }
+}
+
+body.nav-open{
+  overflow:hidden;
+}

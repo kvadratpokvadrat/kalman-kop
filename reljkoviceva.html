@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <title>Interaktivna zgrada</title>
+  <link rel="stylesheet" href="assets/css/reljkoviceva.css">
+</head>
+<body>
+
+<div class="building-wrapper">
+  <img src="img/zgrada.png" class="building-img">
+
+  <svg class="building-map" viewBox="0 0 1536 1024">
+
+    <!-- S1 -->
+    <polygon class="apartment available"
+      points="27.365996,453.55774 248.08846,469.25954 207.26378,664.85912 8.075212,657.23253"
+      data-title="Stan S1"
+      data-img="img/s1.jpg"
+      data-code="S1"
+      data-size="52.10m²"
+      data-type="Jednosoban"
+      data-floor="Prizemlje"
+    />
+
+    <!-- S2 -->
+    <polygon class="apartment available"
+      points="67.251549,198.5824 300.72862,225.86369 260.75836,415.56382 27.281289,397.16481"
+      data-title="Stan S2"
+      data-img="img/s2.jpg"
+      data-code="S2"
+      data-size="61.40m²"
+      data-type="Dvosoban"
+      data-floor="Sprat 1"
+    />
+
+    <!-- S3 -->
+    <polygon class="apartment available"
+      points="1003.0632,559.58364 1145.1797,571.00372 1143.9108,689.01115 1001.7943,684.57001"
+      data-title="Stan S3"
+      data-img="img/s3.jpg"
+      data-code="S3"
+      data-size="73.90m²"
+      data-type="Dvosoban"
+      data-floor="Sprat 2"
+    />
+
+    <!-- S4 -->
+    <polygon class="apartment available"
+      points="411.12268,67.25155 400.97150,207.46468 1015.11770,295.01859 1012.57990,269.64064 984.66419,267.10285 985.29864,163.05328"
+      data-title="Stan S4"
+      data-img="img/s4.jpg"
+      data-code="S4"
+      data-size="98.20m²"
+      data-type="Trosoban"
+      data-floor="Sprat 3"
+    />
+
+    <!-- S5 -->
+    <polygon class="apartment available"
+      points="67.885998,196.04461 298.82528,225.86369 260.75836,418.10161 26.64684,398.43371"
+      data-title="Stan S5"
+      data-img="img/s5.jpg"
+      data-code="S5"
+      data-size="58.60m²"
+      data-type="Jednoiposoban"
+      data-floor="Sprat 1"
+    />
+
+    <!-- S6 -->
+    <polygon class="apartment available"
+      points="1046.2057,404.14374 1522.0421,458.70632 1522.0421,568.46592 1042.3990,528.49566"
+      data-title="Stan S6"
+      data-img="img/s6.jpg"
+      data-code="S6"
+      data-size="81.00m²"
+      data-type="Trosoban"
+      data-floor="Sprat 2"
+    />
+
+    <!-- S7 -->
+    <polygon class="apartment available"
+      points="1367.2367,594.47832 1509.3532,605.26394 1507.4498,702.33457 1362.7955,697.25898"
+      data-title="Stan S7"
+      data-img="img/s8.jpg"
+      data-code="S7"
+      data-size="84.31m²"
+      data-type="Trosoban"
+      data-floor="Sprat 2"
+    />
+
+    <!-- S8 -->
+    <polygon class="apartment available"
+      points="1176.2677,571.00372 1345.6654,581.78934 1344.3965,697.25898 1176.2677,690.91450"
+      data-title="Stan S8"
+      data-img="img/s9.jpg"
+      data-code="S8"
+      data-size="77.50m²"
+      data-type="Dvosoban"
+      data-floor="Sprat 3"
+    />
+
+  </svg>
+
+  <!-- SIDE PANEL -->
+  <div class="side-panel" id="sidePanel">
+    <button class="side-close">&times;</button>
+
+    <h4 class="side-lamela">LAMELA B</h4>
+
+    <div class="side-main">
+      <span id="side-code"></span>
+      <span id="side-size"></span>
+    </div>
+
+    <div class="side-meta">
+      <span id="side-type"></span>
+      <span id="side-floor"></span>
+    </div>
+
+    <div class="side-status" id="side-status"></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <span class="modal-close">&times;</span>
+    <h3 id="modal-title"></h3>
+    <img id="modal-img">
+  </div>
+</div>
+
+<script>
+const panel = document.getElementById("sidePanel");
+const wrapper = document.querySelector(".building-wrapper");
+
+const code = document.getElementById("side-code");
+const size = document.getElementById("side-size");
+const type = document.getElementById("side-type");
+const floor = document.getElementById("side-floor");
+const status = document.getElementById("side-status");
+
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modal-title");
+const modalImg = document.getElementById("modal-img");
+
+document.querySelectorAll(".apartment").forEach(stan => {
+
+  // SIDE PANEL – HOVER
+  stan.addEventListener("mouseenter", () => {
+    const poly = stan.getBoundingClientRect();
+    const wrap = wrapper.getBoundingClientRect();
+
+    let top = poly.top - wrap.top + poly.height / 2 - panel.offsetHeight / 2;
+    let left = poly.right - wrap.left + 12;
+
+    const maxLeft = wrap.width - panel.offsetWidth - 10;
+    if (left > maxLeft) {
+      left = poly.left - wrap.left - panel.offsetWidth - 12;
+    }
+
+    top = Math.max(10, Math.min(top, wrap.height - panel.offsetHeight - 10));
+
+    panel.style.top = top + "px";
+    panel.style.left = left + "px";
+
+    code.textContent = stan.dataset.code;
+    size.textContent = stan.dataset.size;
+    type.textContent = stan.dataset.type;
+    floor.textContent = stan.dataset.floor;
+
+    status.textContent = "SLOBODAN";
+    status.classList.remove("sold");
+
+    panel.classList.add("show");
+  });
+
+  stan.addEventListener("mouseleave", () => {
+    panel.classList.remove("show");
+  });
+
+  // MODAL – CLICK
+  stan.addEventListener("click", () => {
+    modalTitle.textContent = stan.dataset.title;
+    modalImg.src = stan.dataset.img;
+    modal.classList.add("show");
+  });
+
+});
+
+document.querySelector(".side-close").onclick = () => {
+  panel.classList.remove("show");
+};
+
+document.querySelector(".modal-close").onclick = () => {
+  modal.classList.remove("show");
+};
+
+modal.addEventListener("click", e => {
+  if (e.target === modal) modal.classList.remove("show");
+});
+</script>
+
+</body>
+</html>
