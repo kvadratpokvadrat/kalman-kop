@@ -496,7 +496,7 @@ header {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 16 / 9;
   text-decoration: none;
   color: #fff;
   background: #000;
@@ -616,6 +616,7 @@ header {
   display: block;
   margin-bottom: 18px;
 }
+
 
 
 
